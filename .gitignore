@@ -1,0 +1,10 @@
+#ignore cache files
+__pycache__
+#environment variable
+vir_env
+
+#.env file
+.env
+
+#ignore data
+data.txt

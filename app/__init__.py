@@ -1,3 +1,15 @@
+import csv
+import os
+
+config={}
+
+def set_config(typ: bool = True)-> None:
+    '''True means that use in case of production
+    and False mean it use in test case'''
+    if typ:
+        config['file']= os.environ.get('database')
+    else:       #test case 
+        config['file']= os.environ.get('test_database')  
 
 def length_of_max_values(data: list)->dict:
     keys=list(data[0].keys())
@@ -43,9 +55,10 @@ def display(data:list)->None:
             line += adjust_str(dic[key], max_len[key])
         print(line)
 
-    
 
-# data=[
-#     {'id': 5, 'desc': 'Shoping', 'Amount': 900},
-#     {'id': 200, 'desc': 'wifi Recharge', 'Amount': 600}
-# ]
+def export_csv(data):
+    keys = list(data[0].keys())
+    with open('records.csv', 'w') as file:
+        writer=csv.DictWriter(file, keys)
+        writer.writeheader()
+        writer.writerows(data)

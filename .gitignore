@@ -8,3 +8,7 @@ vir_env
 
 #ignore data
 data.txt
+test_data.txt
+
+#ignore csv file
+records.csv

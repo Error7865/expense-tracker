@@ -3,14 +3,15 @@ import os
 from datetime import datetime
 from pathlib import Path
 from dotenv import load_dotenv
+from app import config
 
-load_dotenv()
+# load_dotenv()
 
 class Model:
     def __init__(self): 
         '''Model header :
         ID, Date, Description, Amount'''
-        self.__filename=os.environ.get('database')
+        self.__filename=config['file']
         ls=os.listdir(os.getcwd())
         if self.__filename not in ls:   #not present 
             with open(self.__filename, 'w') as file:
